@@ -96,9 +96,14 @@ VITE_AUTH0_CLIENT_ID=...
 
 ### 5. Scripts útiles
 
-- `npm run dev` — Inicia el servidor de desarrollo Vite.
-- `npm run build` — Genera la build de producción.
-- `npm run preview` — Previsualiza la build localmente.
+- `npm run dev` — Inicia el servidor de desarrollo Vite para desarrollo local.
+- `npm run build` — Genera la build de producción optimizada.
+- `npm run preview` — Previsualiza la build de producción localmente.
+- `npm run lint` — Ejecuta ESLint para analizar y corregir problemas de estilo/código.
+- `npm run format` — Formatea el código automáticamente con Prettier.
+- `npm run test` — Ejecuta las pruebas automáticas con Playwright.
+
+> Todos los scripts relevantes suprimen los warnings experimentales de Node.js automáticamente.
 
 ### 6. Despliegue
 
@@ -114,24 +119,24 @@ Puedes desplegar la app en Firebase Hosting, Vercel, Netlify, etc.
 ## Estructura básica del proyecto con Husky + Commitlint
 
 - `1. package.json (fragmento relevante)`
-{
+  {
   "scripts": {
-    "prepare": "husky install"
+  "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.0.0",
-    "@commitlint/config-conventional": "^18.0.0",
-    "husky": "^9.0.0"
+  "@commitlint/cli": "^18.0.0",
+  "@commitlint/config-conventional": "^18.0.0",
+  "husky": "^9.0.0"
   }
-}
+  }
 
 - `2. commitlint.config.cjs`
-module.exports = {
+  module.exports = {
   extends: ['@commitlint/config-conventional'],
-};
+  };
 
 - `3. .husky/commit-msg (bash script) #!/bin/sh`
-. "$(dirname "$0")/_/husky.sh"
+  . "$(dirname "$0")/\_/husky.sh"
 
 npx --no -- commitlint --edit "$1"
 
@@ -176,8 +181,12 @@ git commit -m "feat: agrega validación con commitlint"
 ```
 
 ## Tipos de commit permitidos (por Convenciones)
+
 - `feat`: nueva funcionalidad
 - `fix`: corrección de errores
+- `perf`: Cambios que mejoran el rendimiento del sitio
+- `build`: Cambios en el sistema de build, tareas de despliegue o instalación
+- `ci`: Cambios en la integración continua
 - `docs`: documentación
 - `style`: formato (sin cambios de lógica)
 - `refactor`: refactorización
@@ -187,7 +196,6 @@ git commit -m "feat: agrega validación con commitlint"
 ---
 
 Puedes extender esta configuración con herramientas como lint-staged, prettier, ESLint, etc.
-
 
 ## Créditos y licencias
 
