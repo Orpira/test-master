@@ -180,18 +180,28 @@ npx --no -- commitlint --edit "$1"
 git commit -m "feat: agrega validación con commitlint"
 ```
 
-## Tipos de commit permitidos (por Convenciones)
+# 📘 Guía de Convenciones para Mensajes de Commits
 
-- `feat`: nueva funcionalidad
-- `fix`: corrección de errores
-- `perf`: Cambios que mejoran el rendimiento del sitio
-- `build`: Cambios en el sistema de build, tareas de despliegue o instalación
-- `ci`: Cambios en la integración continua
-- `docs`: documentación
-- `style`: formato (sin cambios de lógica)
-- `refactor`: refactorización
-- `test`: pruebas
-- `chore`: mantenimiento o configuración
+Esta guía sigue la convención **Conventional Commits**, con algunos prefijos prácticos adicionales como `wip` para trabajo en progreso.
+
+| Prefijo     | Significado                                   | Cuándo usarlo                                                      | Ejemplo                                                 |
+| ----------- | --------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------- |
+| `feat:`     | **Feature** – Nueva funcionalidad             | Al agregar una nueva funcionalidad al sistema                      | `feat: añade formulario de contacto`                    |
+| `fix:`      | **Bugfix** – Corrección de errores            | Al corregir un comportamiento que no funcionaba como se esperaba   | `fix: corrige validación de email en login`             |
+| `docs:`     | **Documentación**                             | Cambios en README, comentarios, documentación técnica              | `docs: añade guía de instalación en README`             |
+| `style:`    | **Estilo** – Sin afectar el comportamiento    | Cambios en espacios, indentación, formato                          | `style: reformatea el archivo App.js`                   |
+| `refactor:` | **Reestructuración interna**                  | Cambios en código sin alterar comportamiento ni corregir bugs      | `refactor: simplifica la lógica de navegación`          |
+| `test:`     | **Pruebas** – Añade o ajusta tests            | Agregar, eliminar o actualizar pruebas automáticas                 | `test: añade pruebas para componente Header`            |
+| `ci:`       | **Integración continua**                      | Cambios en archivos o scripts de CI (GitHub Actions, Travis, etc.) | `ci: configura deploy automático en GitHub Actions`     |
+| `build:`    | **Build system** – Dependencias y empaquetado | Cambios en `package.json`, Webpack, Vite, etc.                     | `build: actualiza versión de Tailwind`                  |
+| `chore:`    | **Tareas varias** – Mantenimiento             | Tareas que no modifican el código fuente directamente              | `chore: limpia archivos temporales`                     |
+| `wip:`      | **Work In Progress** – Trabajo en progreso    | Commits que **no están terminados** pero se quieren guardar        | `wip: comienza componente de registro, sin estilos aún` |
+
+## 🧠 Recomendaciones
+
+- Usa `wip:` para avances no terminados y **haz squash** antes de mergear a `main`.
+- Usa mensajes en **imperativo**: `añade`, `corrige`, `refactoriza`.
+- Evita mensajes genéricos como `cambios`, `update`, `avance`.
 
 ---
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuizStore } from "./store/useQuizStore";
 import CategorySelector from "./components/CategorySelector";
 import QuizPage from "./components/QuizPage";
+import QuizForm from "./components/QuizForm";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import Welcome from "./components/welcome";
@@ -76,7 +77,16 @@ function App() {
       {isAuthenticated ? <NavbarAuth /> : <NavbarGuest />}
       <Routes>
         <Route path="/welcome" element={<Welcome />} />
-
+        <Route
+          path="/quiz"
+          element={
+            <QuizForm
+              questions={quizConfig?.selectedQuestions || []}
+              onFinish={handleQuizFinish}
+            />
+          }
+        />
+        {/* <Route path="/quiz" element={<QuizPage />} /> // Esta ruta no debería existir, se redirige a /tipotest */}
         <Route
           path="/tipotest"
           element={

@@ -11,10 +11,12 @@ function NavbarGuest(): JSX.Element {
       <div className="flex items-center gap-3 justify-center">
         <img
           src="/logo.png"
-          alt="Movies React"
+          alt="Test Master Logo"
+          className="rounded-full"
+          loading="lazy"
           style={{ width: 60, height: 60 }}
         />
-        <h1 className="text-4xl font-bold text-red-500">Movies React</h1>
+        <h1 className="text-4xl font-bold text-red-500">Test Master</h1>
       </div>
       <LoginButton />
     </nav>

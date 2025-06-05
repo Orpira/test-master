@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
         heartbeat: {
           "0%, 100%": { transform: "scale(1)" },
           "14%": { transform: "scale(1.3)" },
@@ -29,6 +33,7 @@ export default {
         },
       },
       animation: {
+        "fade-in": "fade-in 1.2s ease-out forwards",
         heartbeat: "heartbeat 0.8s ease-in-out",
         "fade-in-up": "fade-in-up 1.2s cubic-bezier(0.4,0,0.2,1) both",
         "gradient-text-fade-in":

@@ -19,7 +19,7 @@ const NavbarAuth = () => {
       <ul className="flex items-center space-x-6">
         <li>
           <NavLink
-            to="/tipo-test"
+            to="/tipotest"
             className="text-gray-700 hover:text-blue-600 font-medium"
           >
             Tipo Test
@@ -27,10 +27,10 @@ const NavbarAuth = () => {
         </li>
         <li>
           <NavLink
-            to="/resultado"
+            to="/ranking"
             className="text-gray-700 hover:text-blue-600 font-medium"
           >
-            Resultado
+            Ranking
           </NavLink>
         </li>
         <li>
