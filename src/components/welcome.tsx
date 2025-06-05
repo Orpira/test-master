@@ -1,7 +1,7 @@
 export default function Welcome() {
   return (
     <div
-      className="h-screen relative min-h-[80vh] bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center px-4 text-white"
+      className="w-full h-screen flex flex-col justify-center items-center px-4 text-white bg-no-repeat bg-center bg-cover"
       style={{
         backgroundImage: `url(${import.meta.env.BASE_URL}welcome.png)`,
       }}

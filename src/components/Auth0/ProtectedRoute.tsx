@@ -1,7 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router-dom";
-import { Spinner } from "../../resources/spinner";
-import { ReactNode } from "react";
+// import { Spinner } from "../spinner/Spinner";
+const Spinner = () => <div>Loading...</div>;
+import type { ReactNode } from "react";
 
 interface ProtectedRouteProps {
   children: ReactNode;

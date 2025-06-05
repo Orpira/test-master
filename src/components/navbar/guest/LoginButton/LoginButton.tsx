@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import Button from "../../../commons/Button/Button.jsx";
+import Button from "../../../Button";
 import type { JSX } from "react";
 
 const LoginButton = (): JSX.Element => {

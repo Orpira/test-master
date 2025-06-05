@@ -3,9 +3,13 @@ import { useQuizStore } from "./store/useQuizStore";
 import CategorySelector from "./components/CategorySelector";
 import QuizPage from "./components/QuizPage";
 import { useAuth0 } from "@auth0/auth0-react";
-// Make sure the file exists as ResultScreen.tsx or adjust the import if the file is named differently
-import ResultScreen from "./components/ResultScreen";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
+import Welcome from "./components/welcome";
+import Profile from "./components/Auth0/ProtectedRoute";
+import NavbarGuest from "./components/navbar/guest/NavbarGuest";
+import NavbarAuth from "./components/navbar/auth/NavbarAuth";
+import ProtectedRoute from "./components/Auth0/ProtectedRoute";
+import ResultScreen from "./components/ResultScreen";
 import { fetchAdvancedQuestions } from "./utils/fetchAdvancedQuestions";
 
 function App() {
@@ -69,26 +73,40 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {isAuthenticated ? (
-        <Head logo="./logo.png" title="Movies React" />
-      ) : (
-        <NavbarGuest />
-      )}
-      {!quizConfig && !loadingAdvanced ? (
-        <CategorySelector onStart={handleStart} />
-      ) : showResults ? (
-        <ResultScreen
-          onRestart={() => setQuizConfig(null)}
-          questions={quizConfig!.selectedQuestions}
+      {isAuthenticated ? <NavbarAuth /> : <NavbarGuest />}
+      <Routes>
+        <Route path="/welcome" element={<Welcome />} />
+
+        <Route
+          path="/tipotest"
+          element={
+            <ProtectedRoute>
+              <CategorySelector onStart={handleStart} />
+            </ProtectedRoute>
+          }
         />
-      ) : (
-        quizConfig && (
-          <QuizPage
-            questions={quizConfig.selectedQuestions}
-            onFinish={handleQuizFinish}
-          />
-        )
-      )}
+        <Route
+          path="/resultados"
+          element={
+            !quizConfig ? (
+              <CategorySelector onStart={handleStart} />
+            ) : showResults ? (
+              <ResultScreen
+                onRestart={() => setQuizConfig(null)}
+                questions={quizConfig!.selectedQuestions}
+              />
+            ) : (
+              quizConfig && (
+                <QuizPage
+                  questions={quizConfig.selectedQuestions}
+                  onFinish={handleQuizFinish}
+                />
+              )
+            )
+          }
+        />
+        <Route path="*" element={<Welcome />} />
+      </Routes>
     </div>
   );
 }

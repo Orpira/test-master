@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 // Si usas Auth0 React SDK
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Navbar = () => {
+const NavbarAuth = () => {
   // Descomenta si usas Auth0 React SDK
   const { loginWithRedirect } = useAuth0();
 
@@ -43,7 +43,7 @@ const Navbar = () => {
               window.location.href = "https://TU_DOMINIO_AUTH0/login";
             }}
           >
-            Login
+            Cerrar sesión
           </button>
         </li>
       </ul>
@@ -51,5 +51,5 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarAuth;
 // src/components/navbar/auth/NavbarAuth.tsx
